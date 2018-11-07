@@ -1,0 +1,19 @@
+{
+  "name": "caijw/httpclient",
+  "description": "基于guzzlehttp/guzzle的http client功能",
+  "authors": [
+    {
+      "name": "caijw",
+      "email": "host@caijw.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Caijw\\HttpClient\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.6",
+    "guzzlehttp/guzzle": "^6.3.0"
+  }
+}
