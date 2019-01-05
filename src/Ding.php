@@ -44,7 +44,7 @@ class Ding
 
     public function setRemark(string $remark)
     {
-        $this->remark = "【$remark】";
+        $this->remark = "【{$remark}】";
         return $this;
     }
 
