@@ -16,6 +16,8 @@ class Ding
 
     private $data;
 
+    private $remark = '';
+
     public function __construct($robotCode, $at)
     {
         $this->setRobotCode($robotCode);
@@ -39,21 +41,27 @@ class Ding
         }
     }
 
+    public function setRemark(string $remark)
+    {
+        $this->remark = "【$remark】";
+    }
+
     public function __call($method, $arguments)
     {
         $message = [];
+        $mainContent = $arguments[0] . $this->remark;
         switch ($method) {
             case 'text':
-                $message['content'] = $arguments[0];
+                $message['content'] = $mainContent;
                 break;
             case 'link':
-                $message['title'] = $arguments[0];
+                $message['title'] = $mainContent;
                 $message['text'] = $arguments[1];
                 $message['messageUrl'] = $arguments[2];
                 $message['picUrl'] = $arguments[3];
                 break;
             case 'markdown':
-                $message['title'] = $arguments[0];
+                $message['title'] = $mainContent;
                 $message['text'] = $arguments[1];
                 break;
             default:
