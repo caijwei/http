@@ -20,13 +20,13 @@ class Ding
 
     public function __construct($robotCode, $at)
     {
-        $this->setRobotCode($robotCode);
-        $this->setAt($at);
+        $this->setRobotCode($robotCode)->setAt($at);
     }
 
     public function setRobotCode($robotCode)
     {
         $this->url = "https://oapi.dingtalk.com/robot/send?access_token=$robotCode";
+        return $this;
     }
 
     public function setAt($at)
@@ -39,11 +39,13 @@ class Ding
             }
             $this->data['at'] = ["atMobiles" => $at];
         }
+        return $this;
     }
 
     public function setRemark(string $remark)
     {
         $this->remark = "【$remark】";
+        return $this;
     }
 
     public function __call($method, $arguments)
