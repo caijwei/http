@@ -41,10 +41,10 @@ class Client
 
     /**
      * get 获取
-     * @param string $url
+     * @param $url
      * @param array $data
-     * @return false|string 如果成功返回字符串，失败返回false，所以要用===来判断
-     * @throws SystemException
+     * @param array $headers
+     * @return false|string
      */
     public function get($url, array $data = array(), array $headers = array())
     {
@@ -73,14 +73,13 @@ class Client
      * @param array $data
      * @param array $headers
      * @return false|string
-     * @throws SystemException
      */
     public function post($url, array $data = array(), array $headers = array())
     {
         $this->lastResponse = $this->lastException = null;
         try {
             $response = $this->getGuzzleClient()->post($url, [
-                RequestOptions::FORM_PARAMS => $data,
+                RequestOptions::JSON => $data,
                 RequestOptions::HEADERS => $headers,
             ]);
             return $this->handleResponse($response);
@@ -95,7 +94,6 @@ class Client
      * @param array $data
      * @param array $headers
      * @return false|string
-     * @throws SystemException
      */
     public function postFile($url, array $data, array $headers = array())
     {
@@ -115,10 +113,9 @@ class Client
     /**
      * put 更新
      * @param $url
-     * @param array $data
+     * @param string $data
      * @param array $headers
      * @return false|string
-     * @throws SystemException
      */
     public function put($url, $data = '', array $headers = array())
     {
@@ -139,7 +136,6 @@ class Client
      * @param $url
      * @param array $headers
      * @return false|string
-     * @throws SystemException
      */
     public function head($url, array $headers = array())
     {
@@ -194,7 +190,6 @@ class Client
     /**
      * @param RequestException $ex
      * @return false 永远返回false
-     * @throws SystemException
      */
     private function handleException(RequestException $ex)
     {
