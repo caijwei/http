@@ -80,7 +80,7 @@ class Client
         $this->lastResponse = $this->lastException = null;
         try {
             $response = $this->getGuzzleClient()->post($url, [
-                RequestOptions::FORM_PARAMS => $data,
+                RequestOptions::JSON => $data,
                 RequestOptions::HEADERS => $headers,
             ]);
             return $this->handleResponse($response);
