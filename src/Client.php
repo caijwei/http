@@ -39,6 +39,16 @@ class Client
         $this->config[$name] = $value;
     }
 
+    public function setTimeout($val)
+    {
+        $this->setOption(RequestOptions::TIMEOUT, $val);
+    }
+
+    public function setConnectTimeout($val)
+    {
+        $this->setOption(RequestOptions::CONNECT_TIMEOUT, $val);
+    }
+
     /**
      * get 获取
      * @param $url
@@ -184,7 +194,7 @@ class Client
     private function handleResponse(ResponseInterface $response)
     {
         $this->lastResponse = $response;
-        return (string)$response->getBody();
+        return (string) $response->getBody();
     }
 
     /**
