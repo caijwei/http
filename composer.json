@@ -1,5 +1,5 @@
 {
-  "name": "caijw/httpclient",
+  "name": "caijw/http",
   "description": "基于guzzlehttp/guzzle的http client功能",
   "authors": [
     {

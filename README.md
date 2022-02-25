@@ -1,6 +1,6 @@
 # 用来处理http请求 #
 ## 安装 ##
-	composer require caijw/httpclient
+	composer require caijw/http
 ## 使用 ##
 	$client = new \Caijw\HttpClient\Client();
 	$message = $client->post($url, ['k1' => 'v1', 'k2'=> 'v2']);//使用post提交到某个url上
